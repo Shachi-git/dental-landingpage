@@ -254,7 +254,12 @@ export default function AppointmentSection() {
             </>
           )}
 
-          <div className="flex justify-end gap-4">
+          <div
+            className={cn(
+              'flex gap-4',
+              step > 1 ? 'justify-between' : 'justify-end'
+            )}
+          >
             {step > 1 && (
               <button
                 type="button"

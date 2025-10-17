@@ -9,7 +9,13 @@ const LeftNav = () => {
       id="mobile-drawer"
       className="fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-lg p-4 transition-transform duration-300"
     >
-      <Image src="/logo/logo.webp" alt="Logo" width={350} height={200} />
+      <Image
+        src="/logo/logo.webp"
+        //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo/logo.webp`}
+        alt="Logo"
+        width={350}
+        height={200}
+      />
 
       <nav className="flex flex-col space-y-2 mt-4">
         {navOptions.mobile.map((option, index) => (

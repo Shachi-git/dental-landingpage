@@ -54,7 +54,7 @@ export const TopBar = () => {
 
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
           isMobileOrTablet ? 'py-0 px-0' : 'py-0 px-0'
         )}
       >
@@ -66,6 +66,9 @@ export const TopBar = () => {
               </button>
               <Image
                 src="/logo/logo.webp"
+                /*src={`${
+                  process.env.NEXT_PUBLIC_BASE_PATH || ''
+                }/logo/logo.webp`}*/
                 alt="Logo"
                 width={250}
                 height={200}

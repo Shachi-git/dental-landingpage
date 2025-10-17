@@ -15,6 +15,7 @@ const NavBar = () => {
             <Image
               key="logo"
               src="/logo/logo.webp"
+              //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo/logo.webp`}
               alt="Logo"
               width={250}
               height={80}

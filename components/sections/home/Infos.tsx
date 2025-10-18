@@ -1,15 +1,12 @@
-import {
-  MapPinIcon,
-  UserGroupIcon,
-  CheckCircleIcon,
-  ChatBubbleBottomCenterTextIcon,
-} from '@heroicons/react/24/outline'
+import { FaMapLocationDot, FaUserDoctor } from 'react-icons/fa6'
+import { MdOutlineMessage } from 'react-icons/md'
+import { IoIosCheckmarkCircleOutline } from 'react-icons/io'
 
 const infoItems = [
-  { icon: MapPinIcon, label: 'Locations' },
-  { icon: UserGroupIcon, label: 'Meet the Doctors' },
-  { icon: CheckCircleIcon, label: 'Before & After' },
-  { icon: ChatBubbleBottomCenterTextIcon, label: 'Our Services' },
+  { icon: FaMapLocationDot, label: 'Locations' },
+  { icon: FaUserDoctor, label: 'Meet the Doctors' },
+  { icon: IoIosCheckmarkCircleOutline, label: 'Before & After' },
+  { icon: MdOutlineMessage, label: 'Our Services' },
 ]
 
 export default function Infos() {
@@ -20,7 +17,7 @@ export default function Infos() {
           key={label}
           className="flex flex-col items-center justify-center text-center bg-white px-3 py-4 rounded-xl w-45 cursor-pointer"
         >
-          <Icon className="h-10 w-10 text-foreground mb-2" />
+          <Icon className="h-8 w-8 text-foreground mb-2" />
           <span className="text-base font-semibold text-foreground">
             {label}
           </span>

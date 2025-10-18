@@ -5,7 +5,7 @@ import cn from 'classnames'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import { Montserrat } from 'next/font/google'
 import StarRating from '@/components/ui/Rating'
-import { UserCircleIcon } from '@heroicons/react/24/solid'
+import { FaGoogle } from 'react-icons/fa'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -59,7 +59,7 @@ export default function Testimonial() {
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true
     startX.current = e.pageX
-    scrollStart.current = containerRef.current?.scrollLeft || 0
+    scrollStart.current = containerRef.current?.scrollLeft ?? 0
     containerRef.current?.classList.add('cursor-grabbing')
     document.body.classList.add('user-select-none')
   }
@@ -79,12 +79,15 @@ export default function Testimonial() {
   }
 
   const scrollToIndex = (index: number) => {
+    const container = containerRef.current
+    if (!container) return
+
     const maxScrollIndex = Math.max(testimonials.length - itemsPerView, 0)
     const clampedIndex = Math.min(index, maxScrollIndex)
-    const itemWidth = containerRef.current?.offsetWidth! / itemsPerView
+    const itemWidth = container.offsetWidth / itemsPerView
 
     isAutoScrolling.current = true
-    containerRef.current?.scrollTo({
+    container.scrollTo({
       left: itemWidth * clampedIndex,
       behavior: 'smooth',
     })
@@ -94,8 +97,6 @@ export default function Testimonial() {
       setActiveIndex(clampedIndex)
     }, 50)
   }
-
-  const maxIndex = Math.max(testimonials.length - itemsPerView, 0)
 
   useEffect(() => {
     const container = containerRef.current
@@ -112,6 +113,8 @@ export default function Testimonial() {
     return () => container.removeEventListener('scroll', handleScroll)
   }, [itemsPerView])
 
+  const maxIndex = Math.max(testimonials.length - itemsPerView, 0)
+
   return (
     <div
       className={cn(
@@ -119,7 +122,6 @@ export default function Testimonial() {
         isMobileOrTablet ? 'p-2 pb-8' : 'px-10 pt-5 pb-12'
       )}
     >
-      {' '}
       <h1
         className={cn(
           `text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
@@ -132,7 +134,8 @@ export default function Testimonial() {
         Know more about what our clients say about us!
       </h2>
       <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-      <div className="w-full max-w-5xl px-6">
+
+      <div className="w-full max-w-5xl px-6 pb-2 overflow-hidden">
         <div
           ref={containerRef}
           className="flex gap-6 overflow-x-scroll px-4 cursor-grab scroll-smooth scrollbar-hide"
@@ -154,7 +157,7 @@ export default function Testimonial() {
                   </p>
                   <StarRating rating={5} />
                 </div>
-                <UserCircleIcon className="h-7 w-7 text-gray-400" />
+                <FaGoogle className="h-5 w-5 text-foreground" />
               </div>
 
               <div className="h-px w-full bg-gray-200 my-3" />
@@ -166,7 +169,6 @@ export default function Testimonial() {
           ))}
         </div>
 
-        {/* Pagination Dots */}
         <div className="flex justify-center gap-2 mt-6">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button

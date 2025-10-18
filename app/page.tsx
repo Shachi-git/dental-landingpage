@@ -2,6 +2,7 @@ import AffiliationsScroller from '@/components/sections/home/AffiliationPage'
 import AppointmentSection from '@/components/sections/home/AppointmentSection'
 import ImplantsPage from '@/components/sections/home/ImplantsPage'
 import Infos from '@/components/sections/home/Infos'
+import Locations from '@/components/sections/home/Locations'
 import BlogSection from '@/components/sections/home/OurBlog'
 import Questions from '@/components/sections/home/Questions'
 import Reasons from '@/components/sections/home/Reason'
@@ -18,6 +19,7 @@ export default function Home() {
       <TestimonialsSlider />
       <BlogSection />
       <AffiliationsScroller />
+      <Locations />
     </main>
   )
 }

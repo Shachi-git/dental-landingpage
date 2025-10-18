@@ -71,6 +71,7 @@ export default function BlogSection() {
             <div className="relative h-48 w-full">
               <Image
                 src={post.image}
+                //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -92,7 +93,7 @@ export default function BlogSection() {
 
       <Link
         href="/blog"
-        className="mt-10 btn font-semibold text-white px-6 py-2 rounded transition-colors"
+        className="mt-10 btn font-semibold px-6 py-2 transition-colors"
       >
         Show all posts
       </Link>

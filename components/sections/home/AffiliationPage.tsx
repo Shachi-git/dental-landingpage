@@ -44,7 +44,7 @@ export default function AffiliationsScroller() {
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true
     startX.current = e.pageX
-    scrollStart.current = containerRef.current?.scrollLeft || 0
+    scrollStart.current = containerRef.current?.scrollLeft ?? 0
     containerRef.current?.classList.add('cursor-grabbing')
     document.body.classList.add('user-select-none')
   }
@@ -85,9 +85,32 @@ export default function AffiliationsScroller() {
     }
 
     const interval = setInterval(scrollStep, 3000)
-
     return () => clearInterval(interval)
   }, [isMobileOrTablet])
+
+  const renderCard = (
+    item: (typeof affiliations)[number],
+    key: string | number
+  ) => (
+    <div
+      key={key}
+      className="bg-white rounded-lg border border-gray-200 shadow-sm flex-shrink-0 w-64 h-40 flex flex-col items-center justify-center text-center p-4"
+    >
+      <div className="h-[130px] flex items-center justify-center mb-2">
+        <Image
+          //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${item.image}`}
+          src={item.image}
+          alt={item.name}
+          height={150}
+          width={150}
+          className="object-contain"
+        />
+      </div>
+      <p className="text-sm font-medium text-foreground leading-tight">
+        {item.name}
+      </p>
+    </div>
+  )
 
   return (
     <section className="w-full flex flex-col items-center pt-5 pb-12 px-4 sm:px-6 lg:px-8">
@@ -101,7 +124,7 @@ export default function AffiliationsScroller() {
       </h1>
 
       <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-      <div className="w-full ">
+      <div className="w-full overflow-hidden">
         <div
           ref={containerRef}
           className="flex gap-6 overflow-x-scroll px-4 cursor-grab scroll-smooth scrollbar-hide"
@@ -110,45 +133,10 @@ export default function AffiliationsScroller() {
           onMouseLeave={handleMouseLeave}
           onMouseMove={handleMouseMove}
         >
-          {affiliations.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg border border-gray-200 shadow-sm flex-shrink-0 w-64 h-40 flex flex-col items-center justify-center text-center p-4"
-            >
-              <div className="h-[130px] flex items-center justify-center mb-2">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  height={150}
-                  width={150}
-                  className="object-contain"
-                />
-              </div>
-              <p className="text-sm font-medium text-foreground leading-tight">
-                {item.name}
-              </p>
-            </div>
-          ))}
-
-          {affiliations.map((item, index) => (
-            <div
-              key={`repeat-${index}`}
-              className="bg-white rounded-lg border border-gray-200 shadow-sm flex-shrink-0 w-64 h-40 flex flex-col items-center justify-center text-center p-4"
-            >
-              <div className="h-[130px] flex items-center justify-center mb-2">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  height={150}
-                  width={150}
-                  className="object-contain"
-                />
-              </div>
-              <p className="text-base font-medium text-foreground leading-tight">
-                {item.name}
-              </p>
-            </div>
-          ))}
+          {affiliations.map((item, index) => renderCard(item, index))}
+          {affiliations.map((item, index) =>
+            renderCard(item, `repeat-${index}`)
+          )}
         </div>
       </div>
     </section>

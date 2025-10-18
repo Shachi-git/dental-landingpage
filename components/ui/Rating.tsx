@@ -1,5 +1,5 @@
 import React from 'react'
-import { StarIcon } from '@heroicons/react/20/solid'
+import { FaStar } from 'react-icons/fa'
 
 interface StarRatingProps {
   rating: number
@@ -11,7 +11,7 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   return (
     <div className="flex">
       {stars.map((star) => (
-        <StarIcon
+        <FaStar
           key={star}
           className={`h-3 w-3 ${
             star <= rating ? 'text-yellow-500' : 'text-gray-300'

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/solid'
+import { IoChevronUp, IoChevronDown } from 'react-icons/io5'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -100,9 +100,9 @@ export default function FAQAccordion() {
                 <span className="flex-1 pr-4">{faq.question}</span>
                 <span className="flex-shrink-0">
                   {isOpen ? (
-                    <ChevronUpIcon className="w-5 h-5 transition-transform duration-300 text-[#0085cc]" />
+                    <IoChevronUp className="w-5 h-5 transition-transform duration-300 text-[#0085cc]" />
                   ) : (
-                    <ChevronDownIcon className="w-5 h-5 transition-transform duration-300 text-gray-500" />
+                    <IoChevronDown className="w-5 h-5 transition-transform duration-300 text-gray-500" />
                   )}
                 </span>
               </button>

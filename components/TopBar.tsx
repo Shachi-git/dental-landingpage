@@ -7,9 +7,10 @@ import AddressRotator from './ui/AddressRotator'
 import AppointmentButton from './ui/AppointmentButton'
 import { useMobileOrTablet } from '../lib/useDevice'
 import Image from 'next/image'
-import { Bars3Icon } from '@heroicons/react/24/solid'
+import { FaBars } from 'react-icons/fa6'
 import LeftNav from './LeftNav'
 import NavBar from './NavBar'
+import Link from 'next/link'
 
 export const TopBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -47,11 +48,6 @@ export const TopBar = () => {
 
   return (
     <>
-      {isMenuOpen && (
-        <></>
-        //<div className="fixed inset-0 bg-black/40 z-40 transition-opacity duration-300" />
-      )}
-
       <header
         className={cn(
           'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
@@ -62,17 +58,20 @@ export const TopBar = () => {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between py-2 px-3">
               <button onClick={() => setIsMenuOpen(true)}>
-                <Bars3Icon className="h-8 w-8" />
+                <FaBars className="h-5 w-5" />
               </button>
-              <Image
-                src="/logo/logo.webp"
-                /*src={`${
-                  process.env.NEXT_PUBLIC_BASE_PATH || ''
-                }/logo/logo.webp`}*/
-                alt="Logo"
-                width={250}
-                height={200}
-              />
+              <Link href="/" aria-label="Go to homepage">
+                <Image
+                  src="/logo/logo.webp"
+                  /*src={`${
+                    process.env.NEXT_PUBLIC_BASE_PATH || ''
+                  }/logo/logo.webp`}*/
+                  alt="Logo"
+                  width={200}
+                  height={100}
+                  className="cursor-pointer"
+                />
+              </Link>
             </div>
             <CallButton />
           </div>

@@ -30,7 +30,7 @@ export const StepIndicator: React.FC<StepIndicatorProps> = ({
 
           {index < steps.length - 1 && (
             <div
-              className={cn('h-1 w-45', {
+              className={cn('h-1 w-20 lg:w-40', {
                 'bg-[#0085cc]': step < currentStep,
                 'bg-gray-400': step >= currentStep,
               })}

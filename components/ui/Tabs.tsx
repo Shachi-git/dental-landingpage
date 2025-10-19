@@ -60,10 +60,10 @@ export default function Tabs() {
 
       <div className="mt-4 text-foreground">
         <Image
-          src={tabContent[activeTab].image}
-          /*src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${
+          //src={tabContent[activeTab].image}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${
             tabContent[activeTab].image
-          }`}*/
+          }`}
           height={400}
           width={400}
           alt={tabs.find((t) => t.key === activeTab)?.label || 'Dental-Image'}

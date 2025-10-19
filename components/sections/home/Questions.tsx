@@ -5,6 +5,7 @@ import { useMobileOrTablet } from '@/lib/useDevice'
 import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { IoChevronUp, IoChevronDown } from 'react-icons/io5'
+import Link from 'next/link'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -128,9 +129,14 @@ export default function FAQAccordion() {
           )
         })}
       </div>
-      <button type="button" className="btn font-medium">
+      <Link
+        href="https://www.dentalimplantsusa.com/dental-implants-faq"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-10 btn font-semibold px-6 py-2 transition-colors"
+      >
         Show All FAQs
-      </button>
+      </Link>
     </div>
   )
 }

@@ -34,7 +34,7 @@ export default function AppointmentSection() {
     gumDisease: '',
     implants: '',
     dentures: '',
-    allowTexting: '',
+    allowTexting: false,
   })
 
   const LOCAL_STORAGE_KEY = 'consultationFormData'
@@ -51,7 +51,7 @@ export default function AppointmentSection() {
   const handleCheckboxChange = (checked: boolean) => {
     setFormData((prev) => ({
       ...prev,
-      allowTexting: checked ? 'Allow' : 'Not Allowed',
+      allowTexting: checked,
     }))
   }
 
@@ -73,8 +73,10 @@ export default function AppointmentSection() {
         : []
 
     requiredFields.forEach((key) => {
-      const value = formData[key as keyof typeof formData].trim()
-      if (!value) fieldErrors[key] = 'This field is required!'
+      const value = formData[key as keyof typeof formData]
+      if (typeof value === 'string' && !value.trim()) {
+        fieldErrors[key] = 'This field is required!'
+      }
     })
 
     if (step === 1) {
@@ -123,10 +125,25 @@ export default function AppointmentSection() {
     setIsSubmitting(true)
 
     try {
-      const created = await directus.request(createItem('vue_forms', formData))
+      const payload = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.contact,
+        allow_texts: formData.allowTexting,
+        submission_data: {
+          office: formData.office,
+          service: formData.service,
+          time: formData.time,
+          missing_teeth: formData.missingTeeth,
+          gum_disease: formData.gumDisease,
+          implants: formData.implants,
+          dentures: formData.dentures,
+          allow_texting: formData.allowTexting,
+        },
+      }
 
-      console.log('Form submitted successfully:', created)
-
+      await directus.request(createItem('vue_forms', payload))
       localStorage.removeItem(LOCAL_STORAGE_KEY)
       setIsSubmitted(true)
     } catch (err) {
@@ -150,7 +167,7 @@ export default function AppointmentSection() {
       gumDisease: '',
       implants: '',
       dentures: '',
-      allowTexting: '',
+      allowTexting: false,
     })
     setErrors({})
     setIsSubmitted(false)
@@ -269,7 +286,7 @@ export default function AppointmentSection() {
                   id="allowTexting"
                   question="By giving your number you agree to receive texts from Advanced Periodontics & Implants. Message frequency varies. Msg & data rates may apply. Reply HELP for help or STOP to opt-out."
                   type="checkbox"
-                  value={formData.allowTexting === 'Allow' ? 'true' : 'false'}
+                  value={formData.allowTexting ? 'true' : 'false'}
                   onChange={(val) => handleCheckboxChange(val === 'true')}
                 />
               </div>

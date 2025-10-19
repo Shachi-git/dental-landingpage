@@ -10,8 +10,8 @@ export const navOptions = {
   ],
   desktop: [
     { label: 'Learn', href: '/' },
-    { label: 'Treatment Options', href: '/' },
-    { label: 'Before After', href: '/' },
+    { label: 'Treatment Options', href: 'https://www.dentalimplantsusa.com/our-services/' },
+    { label: 'Before After', href: 'https://www.dentalimplantsusa.com/before-after/' },
     { label: 'Our Doctors', href: '/' },
     { label: 'Locations', href: '/' },
   ],

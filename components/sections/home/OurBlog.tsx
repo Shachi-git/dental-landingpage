@@ -17,7 +17,7 @@ const blogPosts = [
     date: 'July 7, 2024',
     image:
       '/blog/dental-implants-and-smoking-risks-effects-and-best-practices.webp',
-    href: '/blog/dental-implants-smoking',
+    href: 'https://www.dentalimplantsusa.com/dental-implants-and-smoking-risks-effects-and-best-practices/',
   },
   {
     title:
@@ -25,13 +25,13 @@ const blogPosts = [
     date: 'July 7, 2024',
     image:
       '/blog/permanent-dentures-vs-dental-implants-making-the-right-choice-for-your-smile.webp',
-    href: '/blog/dentures-vs-implants',
+    href: 'https://www.dentalimplantsusa.com/permanent-dentures-vs-dental-implants-making-the-right-choice-for-your-smile/',
   },
   {
     title: 'Can You Get Dental Implants with Gum Disease?',
     date: 'July 7, 2024',
     image: '/blog/can-you-get-dental-implants-with-gum-disease.webp',
-    href: '/blog/implants-gum-disease',
+    href: 'https://www.dentalimplantsusa.com/can-you-get-dental-implants-with-gum-disease/',
   },
   {
     title:
@@ -39,7 +39,7 @@ const blogPosts = [
     date: 'July 8, 2024',
     image:
       '/blog/can-dental-implants-get-infected-understanding-risks-and-prevention.webp',
-    href: '/blog/implants-infection',
+    href: 'https://www.dentalimplantsusa.com/can-dental-implants-get-infected-understanding-risks-and-prevention/',
   },
 ]
 
@@ -66,12 +66,14 @@ export default function BlogSection() {
           <Link
             key={index}
             href={post.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="bg-white rounded-lg border border-gray-300 shadow-sm overflow-hidden hover:shadow-md hover:scale-105 transition-transform duration-300"
           >
             <div className="relative h-48 w-full">
               <Image
-                src={post.image}
-                //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
+                //src={post.image}
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
                 alt={post.title}
                 fill
                 className="object-cover"
@@ -92,7 +94,9 @@ export default function BlogSection() {
       </div>
 
       <Link
-        href="/blog"
+        href="https://www.dentalimplantsusa.com/blog/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="mt-10 btn font-semibold px-6 py-2 transition-colors"
       >
         Show all posts

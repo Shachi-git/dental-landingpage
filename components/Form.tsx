@@ -53,7 +53,12 @@ export const Form = forwardRef<HTMLDivElement, FormProps>(
             )}
             htmlFor={id}
           >
-            {question} {required && <span className="text-red-500">*</span>}
+            {question}{' '}
+            {required && (
+              <span className="text-red-500" aria-label="required">
+                *
+              </span>
+            )}
           </label>
           {type === 'radio' ? (
             <div className="flex mt-2 border rounded overflow-hidden w-fit">
@@ -116,7 +121,9 @@ export const Form = forwardRef<HTMLDivElement, FormProps>(
               value={value}
               onChange={(e) => onChange?.(e.target.value)}
             >
-              <option value="">- Select -</option>
+              <option value="" aria-label="Select">
+                - Select -
+              </option>
               {options.map((opt) => (
                 <option key={opt.value} value={opt.value}>
                   {opt.label}

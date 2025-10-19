@@ -98,8 +98,8 @@ export default function AffiliationsScroller() {
     >
       <div className="h-[130px] flex items-center justify-center mb-2">
         <Image
-          //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${item.image}`}
-          src={item.image}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${item.image}`}
+          //src={item.image}
           alt={item.name}
           height={150}
           width={150}

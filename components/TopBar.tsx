@@ -60,12 +60,16 @@ export const TopBar = () => {
               <button onClick={() => setIsMenuOpen(true)}>
                 <FaBars className="h-5 w-5" />
               </button>
-              <Link href="/" aria-label="Go to homepage">
+              <Link
+                //href="/"
+                href="/index.html"
+                aria-label="Dental Implant USA Icon"
+              >
                 <Image
-                  src="/logo/logo.webp"
-                  /*src={`${
+                  //src="/logo/logo.webp"
+                  src={`${
                     process.env.NEXT_PUBLIC_BASE_PATH || ''
-                  }/logo/logo.webp`}*/
+                  }/logo/logo.webp`}
                   alt="Logo"
                   width={200}
                   height={100}

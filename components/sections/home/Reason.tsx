@@ -83,10 +83,10 @@ export default function Reasons() {
         </div>
         <div className="text-foreground flex flex-wrap items-start gap-6 default-bg-gray p-5">
           <Image
-            src={reasonsContent[activeTab].image}
-            /*src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${
+            //src={reasonsContent[activeTab].image}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${
               reasonsContent[activeTab].image
-            }`}*/
+            }`}
             height={400}
             width={400}
             alt={

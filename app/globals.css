@@ -40,6 +40,17 @@
     user-select: none;
   }
 
+  .head-loc-btn {
+    background-color: #ffffff !important;
+    color: #444443 !important;
+    padding: 0.75rem 4rem;
+    transition: 0.3s ease;
+  }
+
+  .head-loc-active {
+    color: #0085cc !important;
+  }
+
   .loc-btn {
     background-color: #ffffff !important;
     color: #444443 !important;

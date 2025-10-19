@@ -11,17 +11,26 @@ export default function Copyright() {
         </p>
 
         <div className="flex gap-4 text-sm text-foreground">
-          <Link href="/privacy-policy" className="underline hover:no-underline">
+          <Link
+            href="https://www.dentalimplantsusa.com/privacy-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:no-underline"
+          >
             Privacy Policy
           </Link>
           <Link
-            href="/accessibility-policy"
+            href="https://www.dentalimplantsusa.com/accessibility-policy/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="underline hover:no-underline"
           >
             Accessibility Policy
           </Link>
           <Link
-            href="/terms-and-conditions"
+            href="https://www.dentalimplantsusa.com/terms-conditions/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="underline hover:no-underline"
           >
             Terms & Conditions

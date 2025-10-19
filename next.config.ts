@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  //basePath: "/copyparty/u/johnpaul.olimpo/dental-implant-usa-form-page",
-  //assetPrefix: "/copyparty/u/johnpaul.olimpo/dental-implant-usa-form-page/",
+  basePath: "/copyparty/u/johnpaul.olimpo/dental-implant-usa-form-page",
+  assetPrefix: "/copyparty/u/johnpaul.olimpo/dental-implant-usa-form-page/",
 };
 
 export default nextConfig;

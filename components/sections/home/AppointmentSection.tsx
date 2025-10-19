@@ -76,7 +76,7 @@ export default function AppointmentSection() {
     email: '',
     contact: '',
     HearAboutUs: '',
-    allowTexts: 'false',
+    allowTexts: false,
   })
 
   const LOCAL_STORAGE_KEY = 'dentalImplantFormData'
@@ -115,7 +115,8 @@ export default function AppointmentSection() {
     const fieldErrors: Record<string, string> = {}
 
     requiredFields.forEach((key) => {
-      if (formData[key as keyof typeof formData].trim() === '') {
+      const value = formData[key as keyof typeof formData]
+      if (typeof value === 'string' && !value.trim()) {
         fieldErrors[key] = 'This field is required!'
       }
     })
@@ -149,7 +150,7 @@ export default function AppointmentSection() {
         last_name: formData.lastName,
         email: formData.email,
         phone: formData.contact,
-        allow_texts: formData.allowTexts === 'true',
+        allow_texts: formData.allowTexts,
         submission_data: {
           office: formData.office,
           service: formData.service,
@@ -157,8 +158,7 @@ export default function AppointmentSection() {
           hear_about_us: formData.HearAboutUs,
         },
       }
-      const created = await directus.request(createItem('vue_forms', payload))
-      console.log('Form successfully submitted:', created)
+      await directus.request(createItem('vue_forms', payload))
       setStep(4)
       localStorage.removeItem(LOCAL_STORAGE_KEY)
     } catch (err) {
@@ -202,8 +202,8 @@ export default function AppointmentSection() {
         )}
       >
         <Image
-          src={bg}
-          //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${bg}`}
+          //src={bg}
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${bg}`}
           alt="Testimonial background"
           fill
           priority
@@ -229,16 +229,16 @@ export default function AppointmentSection() {
 
           <div className="flex justify-center gap-4 mt-4">
             <Image
-              src={before}
-              //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${before}`}
+              //src={before}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${before}`}
               alt="Before"
               width={100}
               height={70}
               className="rounded border"
             />
             <Image
-              src={after}
-              //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${after}`}
+              //src={after}
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${after}`}
               alt="After"
               width={100}
               height={70}
@@ -359,7 +359,7 @@ export default function AppointmentSection() {
                     id="allowTexts"
                     question="By giving your number you agree to receive texts from Advanced Periodontics & Implants. Message frequency varies. Msg & data rates may apply. Reply HELP for help or STOP to opt-out."
                     type="checkbox"
-                    value={formData.allowTexts}
+                    value={formData.allowTexts ? 'true' : 'false'}
                     onChange={handleChange('allowTexts')}
                     error={errors.allowTexts}
                   />

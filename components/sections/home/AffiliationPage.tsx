@@ -5,6 +5,7 @@ import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import Image from 'next/image'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -40,6 +41,7 @@ export default function AffiliationsScroller() {
   const isDragging = useRef(false)
   const startX = useRef(0)
   const scrollStart = useRef(0)
+  const isMobile = useMobile()
 
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true
@@ -113,30 +115,37 @@ export default function AffiliationsScroller() {
   )
 
   return (
-    <section className="w-full flex flex-col items-center pt-5 pb-12 px-4 sm:px-6 lg:px-8">
+    <section
+      className={cn(
+        'flex flex-col items-center',
+        isMobile ? 'px-5 py-5' : isMobileOrTablet ? 'px-5 py-10' : 'py-20 px-35'
+      )}
+    >
       <h1
         className={cn(
           `text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'text-5xl'
+          isMobileOrTablet ? 'p-4 text-4xl' : 'pt-0 text-5xl'
         )}
       >
         Accreditations and Affiliations
       </h1>
 
-      <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-      <div className="w-full overflow-hidden">
-        <div
-          ref={containerRef}
-          className="flex gap-6 overflow-x-scroll px-4 cursor-grab scroll-smooth scrollbar-hide"
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={handleMouseLeave}
-          onMouseMove={handleMouseMove}
-        >
-          {affiliations.map((item, index) => renderCard(item, index))}
-          {affiliations.map((item, index) =>
-            renderCard(item, `repeat-${index}`)
-          )}
+      <hr className="my-1 w-full border-t" />
+      <div className="w-full overflow-hidden py-5">
+        <div className=" default-bg-gray p-5">
+          <div
+            ref={containerRef}
+            className="flex gap-6 overflow-x-scroll px-4 cursor-grab scroll-smooth scrollbar-hide"
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            onMouseMove={handleMouseMove}
+          >
+            {affiliations.map((item, index) => renderCard(item, index))}
+            {affiliations.map((item, index) =>
+              renderCard(item, `repeat-${index}`)
+            )}
+          </div>
         </div>
       </div>
     </section>

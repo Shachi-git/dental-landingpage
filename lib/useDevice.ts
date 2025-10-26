@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-const MEDIUM_BREAKPOINT = 1023
+const MEDIUM_BREAKPOINT = 1200
 
 export function useMobileOrTablet() {
   const [isMobileOrTablet, setMobileOrTablet] = React.useState<boolean | undefined>(undefined)

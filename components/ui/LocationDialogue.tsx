@@ -5,7 +5,6 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Montserrat } from 'next/font/google'
-import { useMobileOrTablet } from '@/lib/useDevice'
 import { locationSection } from '@/lib/sections'
 import { IoLocationSharp, IoCalendarOutline, IoCall } from 'react-icons/io5'
 
@@ -25,7 +24,6 @@ export default function LocationDialogue({
   onMouseEnter,
   onMouseLeave,
 }: LocationDialogueProps) {
-  const isMobileOrTablet = useMobileOrTablet()
   const [activeLocation, setActiveLocation] = useState(locationSection[0])
 
   return (

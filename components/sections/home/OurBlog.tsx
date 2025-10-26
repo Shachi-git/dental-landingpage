@@ -5,6 +5,7 @@ import Link from 'next/link'
 import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { useMobileOrTablet } from '@/lib/useDevice'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -45,23 +46,33 @@ const blogPosts = [
 
 export default function BlogSection() {
   const isMobileOrTablet = useMobileOrTablet()
-
+  const isMobile = useMobile()
   return (
-    <section className="w-full flex flex-col default-bg-gray items-center pt-5 pb-12 px-4 sm:px-6 lg:px-8">
+    <section
+      className={cn(
+        'flex flex-col items-center default-bg-gray',
+        isMobile
+          ? 'px-5 py-20'
+          : isMobileOrTablet
+          ? 'px-5 py-10'
+          : 'py-20 px-35'
+      )}
+    >
       <h1
         className={cn(
-          `text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'text-5xl'
+          `text-center font-bold text-foreground max-w-2xl uppercase ${montserrat.className}`,
+          isMobileOrTablet ? 'text-4xl' : 'text-5xl'
         )}
       >
         Our Blog
       </h1>
-      <h2 className="text-xl text-center text-foreground max-w-2xl pb-4">
+      <h2 className="text-xl text-center sub-head max-w-2xl pb-4">
         Discover our blog posts and stay in touch with us!
       </h2>
-      <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full">
+      <hr className="my-1 w-full border-t" />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-5 w-full">
         {blogPosts.map((post, index) => (
           <Link
             key={index}
@@ -72,7 +83,6 @@ export default function BlogSection() {
           >
             <div className="relative h-48 w-full">
               <Image
-                //src={post.image}
                 src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
                 alt={post.title}
                 fill
@@ -97,7 +107,7 @@ export default function BlogSection() {
         href="https://www.dentalimplantsusa.com/blog/"
         target="_blank"
         rel="noopener noreferrer"
-        className="mt-10 btn font-semibold px-6 py-2 transition-colors"
+        className="mt-1 btn font-semibold px-6 py-2 transition-colors"
       >
         Show all posts
       </Link>

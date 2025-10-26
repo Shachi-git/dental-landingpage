@@ -5,6 +5,7 @@ import { Montserrat } from 'next/font/google'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import cn from 'classnames'
 import Image from 'next/image'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -30,7 +31,7 @@ const reasonsContent: Record<string, { text: string; image: string }> = {
     image: '/reasons/xsingle-tooth-replacement.webp',
   },
   multipleTooth: {
-    text: 'Tooth decay, gum disease, or injury can be one of the causes of missing teeth. You can select from several teeth replacement options for replacing several missing teeth — from temporary to fixed solutions. Multiple teeth replacement options include dental implants, a fixed dental bridge, and a removable partial denture. If you are looking to replace several missing teeth, consult with one of our highly experienced specialists to see which treatment option is best for you!',
+    text: 'Tooth decay, gum disease, or injury can be one of the causes of missing teeth. You can select from several teeth replacement options for replacing several missing teeth - from temporary to fixed solutions. Multiple teeth replacement options include dental implants, a fixed dental bridge, and a removable partial denture. If you are looking to replace several missing teeth, consult with one of our highly experienced specialists to see which treatment option is best for you!',
     image: '/reasons/xmultiple-tooth-replacement.webp',
   },
   smileInADay: {
@@ -50,24 +51,28 @@ const reasonsContent: Record<string, { text: string; image: string }> = {
 export default function Reasons() {
   const [activeTab, setActiveTab] = useState('allOn4')
   const isMobileOrTablet = useMobileOrTablet()
-
+  const isMobile = useMobile()
   return (
     <div
       className={cn(
-        'flex flex-col items-center',
-        isMobileOrTablet ? 'p-2 pb-8' : 'p-10'
+        'flex flex-col items-center w-full',
+        isMobile
+          ? 'px-5 py-20'
+          : isMobileOrTablet
+          ? 'px-5 py-10'
+          : 'py-20 px-35'
       )}
     >
       <h1
         className={cn(
-          ` text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-2 pt-5 text-4xl' : 'text-5xl'
+          ` text-center font-bold text-foreground max-w-2xl pb-5 uppercase ${montserrat.className}`,
+          isMobileOrTablet ? 'text-4xl' : 'text-5xl'
         )}
       >
         Why Choose Us?
       </h1>
-      <hr className="my-1 border-t border-forground w-3/4" />
-      <div className="flex flex-col items-center w-5/6">
+      <hr className="my-1 border-t" />
+      <div className="flex flex-col items-center w-full">
         <div className="flex w-full pt-5 pb-0 overflow-x-auto scrollbar-hide flex-nowrap">
           {reasons.map((tab) => (
             <button

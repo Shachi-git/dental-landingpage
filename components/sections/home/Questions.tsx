@@ -6,6 +6,7 @@ import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { IoChevronUp, IoChevronDown } from 'react-icons/io5'
 import Link from 'next/link'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -65,7 +66,7 @@ const faqs = [
 export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
   const isMobileOrTablet = useMobileOrTablet()
-
+  const isMobile = useMobile()
   const toggle = (index: number) => {
     setOpenIndex((prev) => (prev === index ? null : index))
   }
@@ -74,23 +75,27 @@ export default function FAQAccordion() {
     <div
       className={cn(
         'flex flex-col items-center default-bg-gray',
-        isMobileOrTablet ? 'p-2 pb-8' : 'px-10 pt-5 pb-12'
+        isMobile
+          ? 'px-5 py-20'
+          : isMobileOrTablet
+          ? 'px-5 py-10'
+          : 'py-20 px-35'
       )}
     >
       <h1
         className={cn(
-          ` text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'text-5xl'
+          ` text-center font-bold text-foreground max-w-2xl pb-5 uppercase ${montserrat.className}`,
+          isMobileOrTablet ? 'text-4xl' : 'text-5xl'
         )}
       >
         Frequently Asked Questions
       </h1>
-      <hr className="my-1 border-t border-forground w-3/4" />
-      <div className="space-y-2 pt-3 w-5/6 flex flex-col items-center pb-8">
+      <hr className="my-1 w-full border-t" />
+      <div className="space-y-2 pt-5 w-full flex flex-col items-center">
         {faqs.map((faq, index) => {
           const isOpen = openIndex === index
           return (
-            <div key={index} className="border-b w-full max-w-4xl">
+            <div key={index} className="border-b border-[#33333348] w-full">
               <button
                 onClick={() => toggle(index)}
                 className={cn(
@@ -110,7 +115,7 @@ export default function FAQAccordion() {
 
               <div
                 className={cn(
-                  'px-4 overflow-hidden transition-all duration-300 text-foreground border-t',
+                  'px-4 overflow-hidden transition-all duration-300 text-foreground border-t border-[#33333348]',
                   isOpen ? 'py-3 h-48 overflow-y-auto' : 'h-0 py-0'
                 )}
               >
@@ -128,15 +133,15 @@ export default function FAQAccordion() {
             </div>
           )
         })}
+        <Link
+          href="https://www.dentalimplantsusa.com/dental-implants-faq"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 btn font-semibold px-6 py-2 transition-colors" // Ensure consistent margin
+        >
+          Show All FAQs
+        </Link>
       </div>
-      <Link
-        href="https://www.dentalimplantsusa.com/dental-implants-faq"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-10 btn font-semibold px-6 py-2 transition-colors"
-      >
-        Show All FAQs
-      </Link>
     </div>
   )
 }

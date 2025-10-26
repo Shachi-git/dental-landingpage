@@ -5,8 +5,14 @@ import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import { useRouter } from 'next/navigation'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['600'],
+})
+
+const montserratSemi = Montserrat({
   subsets: ['latin'],
   weight: ['600'],
 })
@@ -54,23 +60,29 @@ export default function AppointmentSection() {
   const [activeLocation, setActiveLocation] = useState(locations[0])
   const isMobileOrTablet = useMobileOrTablet()
   const router = useRouter()
+  const isMobile = useMobile()
 
   const handleClick = () => {
     router.push('/consultation/')
   }
   return (
-    <section className="w-full flex flex-col items-center pt-16 pb-12 px-4 sm:px-6 lg:px-8">
+    <section
+      className={cn(
+        'flex flex-col items-center w-full',
+        isMobile ? 'px-5 py-5' : isMobileOrTablet ? 'px-5 py-10' : 'py-20 px-35'
+      )}
+    >
       <h1
         className={cn(
-          `text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'text-5xl'
+          `text-center font-bold text-foreground p-6 uppercase ${montserrat.className}`,
+          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'pt-0 text-5xl '
         )}
       >
         Schedule Your Appointment
       </h1>
-      <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-      <div className="flex flex-col lg:flex-row gap-8 w-full max-w-5xl">
-        <div className="flex flex-col flex-wrap justify-center gap-2 mb-8">
+      <hr className="my-1 w-full border-t" />
+      <div className="flex flex-col md:flex-row pt-5 gap-8 w-full max-w-5xl">
+        <div className="flex flex-col flex-wrap justify-start gap-2 mb-8">
           {locations.map((loc) => (
             <button
               key={loc.name}
@@ -84,8 +96,8 @@ export default function AppointmentSection() {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-5xl">
-          <div className="w-full h-80 rounded overflow-hidden shadow-sm flex-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+          <div className="w-full h-50 rounded overflow-hidden shadow-sm flex-1">
             <iframe
               src={activeLocation.mapEmbed}
               width="100%"
@@ -96,8 +108,12 @@ export default function AppointmentSection() {
             />
           </div>
 
-          <div className="flex flex-col justify-start text-center items-center lg:items-start lg:text-left min-h-[100px]">
-            <h3 className="text-2xl font-semibold text-foreground mb-3 max-w-2xl">
+          <div className="flex flex-col justify-start text-center items-center md:items-start md:text-left min-h-[100px]">
+            <h3
+              className={cn(
+                `text-2xl font-semibold text-foreground mb-3 max-w-2xl ${montserratSemi.className}`
+              )}
+            >
               Advanced Periodontics & Implants Dentistry - {activeLocation.name}
             </h3>
             <p className="text-base font-light text-foreground mb-2 whitespace-pre-line">

@@ -48,8 +48,8 @@ const LeftNav = () => {
         }`}
       >
         <Link
-          //href="/"
-          href="/index.html"
+          href="/"
+          //href="/index.html"
           aria-label="Dental Implant USA Logo"
         >
           <Image

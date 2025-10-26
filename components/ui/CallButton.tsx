@@ -3,6 +3,7 @@
 import React from 'react'
 import { useMobileOrTablet } from '../../lib/useDevice'
 import { IoIosCall } from 'react-icons/io'
+import Link from 'next/link'
 
 export default function CallButton() {
   const isMobileOrTablet = useMobileOrTablet()
@@ -10,15 +11,16 @@ export default function CallButton() {
   return (
     <>
       {isMobileOrTablet ? (
-        <button
+        <Link
+          href="tel:8774406579"
           aria-label="Schedule an Appointment"
           className="inline-flex items-center space-x-2 application-btn w-full justify-center cursor-pointer"
         >
           <IoIosCall className="h-4 w-4" />
           <span className=" text-lg">Call to Schedule an Appointment</span>
-        </button>
+        </Link>
       ) : (
-        <a
+        <Link
           href="tel:8774406579"
           aria-label="Call"
           className="inline-flex items-center space-x-1 cursor-pointer group"
@@ -27,7 +29,7 @@ export default function CallButton() {
           <span className="font-bold text-lg group-hover:underline">
             (877) 440-6579
           </span>
-        </a>
+        </Link>
       )}
     </>
   )

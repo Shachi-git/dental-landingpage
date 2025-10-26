@@ -1,4 +1,8 @@
+'use client'
+
 import { Montserrat } from 'next/font/google'
+import { useMobileOrTablet } from '@/lib/useDevice'
+import cn from 'classnames'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -6,9 +10,15 @@ const montserrat = Montserrat({
 })
 
 export default function ImplantsPage() {
+  const isMobileOrTablet = useMobileOrTablet()
+
   return (
-    <div className={`flex justify-center p-4 w-full ${montserrat.className}`}>
-      <h2 className="text-xl text-center text-foreground max-w-2xl">
+    <div className={cn('flex justify-center p-5 w-full')}>
+      <h2
+        className={cn(
+          `text-xl text-center text-foreground max-w-2xl ${montserrat.className}`
+        )}
+      >
         Top Dental Implants Centers in NYC, NJ, Long Island & Bronxville
       </h2>
     </div>

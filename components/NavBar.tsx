@@ -37,43 +37,45 @@ const NavBar = () => {
   }
 
   return (
-    <div className="bg-white z-50 shadow-xs px-6 py-4 w-full flex items-center justify-center">
-      <nav className="flex flex-row gap-x-6 items-center">
+    <div className="bg-white z-50 shadow-xs py-4 w-full flex items-center justify-center">
+      <nav className="flex w-full justify-center items-center px-20">
         {navWithLogo.map((option) => {
           if (option.label === 'logo') {
             return (
               <Link
                 key="logo"
-                //href="/"
                 href="/index.html"
                 aria-label="Dental Implant USA Logo"
               >
-                <Image
-                  //src="/logo/logo.webp"
-                  src={`${
-                    process.env.NEXT_PUBLIC_BASE_PATH || ''
-                  }/logo/logo.webp`}
-                  alt="Dental Implant USA Logo"
-                  width={250}
-                  height={80}
-                  className="cursor-pointer"
-                />
+                <div className="flex-shrink-0 w-1/2 sm:w-[250px]">
+                  <Image
+                    src={`${
+                      process.env.NEXT_PUBLIC_BASE_PATH || ''
+                    }/logo/logo.webp`}
+                    alt="Dental Implant USA Logo"
+                    width={250}
+                    height={80}
+                    className="cursor-pointer"
+                  />
+                </div>
               </Link>
             )
           }
 
           return (
-            <div key={option.label} className="relative">
-              <button
-                className="px-4 py-2 rounded cursor-pointer text-lg text-foreground hover:text-inherit font-normal"
-                onMouseEnter={() => openFloating(option.label)}
-                onMouseLeave={closeFloating}
-                onFocus={() => openFloating(option.label)}
-                onBlur={closeFloating}
-              >
-                {option.label}
-              </button>
-
+            <div key={option.label} className="flex-grow">
+              <div className="flex justify-center">
+                <button
+                  className="px-3 py-2 rounded whitespace-nowrap cursor-pointer text-base text-foreground hover:text-inherit font-normal"
+                  onMouseEnter={() => openFloating(option.label)}
+                  onMouseLeave={closeFloating}
+                  onFocus={() => openFloating(option.label)}
+                  onBlur={closeFloating}
+                >
+                  {option.label}
+                </button>
+              </div>
+              {/* Dialogue components */}
               {option.label === 'Learn' && activeOption === 'Learn' && (
                 <Dialogue
                   open={floatingOpen}

@@ -11,11 +11,13 @@ import { FaBars } from 'react-icons/fa6'
 import LeftNav from './LeftNav'
 import NavBar from './NavBar'
 import Link from 'next/link'
+import { useMobile } from '@/lib/useMobile'
 
 export const TopBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const isMobileOrTablet = useMobileOrTablet()
+  const isMobile = useMobile()
 
   useEffect(() => {
     setMounted(true)
@@ -56,13 +58,18 @@ export const TopBar = () => {
       >
         {isMobileOrTablet ? (
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-between py-2 px-3">
+            <div
+              className={cn(
+                'flex items-center justify-between py-2',
+                isMobile ? 'px-5' : isMobileOrTablet ? 'px-5' : 'px-20'
+              )}
+            >
               <button onClick={() => setIsMenuOpen(true)}>
-                <FaBars className="h-5 w-5" />
+                <FaBars className="h-6 w-8" />
               </button>
               <Link
-                //href="/"
-                href="/index.html"
+                href="/"
+                //href="/index.html"
                 aria-label="Dental Implant USA Icon"
               >
                 <Image
@@ -81,12 +88,12 @@ export const TopBar = () => {
           </div>
         ) : (
           <div>
-            <div className="max-w-7xl mx-auto flex items-center justify-between py-2 px-12">
+            <div className="flex items-center justify-between py-3 px-35">
               <CallButton />
               <AddressRotator />
               <AppointmentButton />
             </div>
-            <div className="w-full">
+            <div className="flex w-full ">
               <NavBar />
             </div>
           </div>

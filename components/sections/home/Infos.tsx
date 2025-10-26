@@ -30,7 +30,7 @@ const infoItems = [
 
 export default function Infos() {
   return (
-    <div className="flex flex-wrap justify-center gap-8 py-7 bg-[#f7f7f7]">
+    <div className="flex flex-wrap justify-center gap-8 py-5 default-bg-gray">
       {infoItems.map(({ icon: Icon, label, href }) => (
         <Link
           key={label}

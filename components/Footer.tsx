@@ -2,6 +2,9 @@
 
 import Link from 'next/link'
 import { FaFacebookF, FaInstagram } from 'react-icons/fa'
+import cn from 'classnames'
+import { useMobileOrTablet } from '@/lib/useDevice'
+import { useMobile } from '@/lib/useMobile'
 
 const consequences = [
   {
@@ -52,7 +55,7 @@ const doctors = [
     href: 'https://www.dentalimplantsusa.com/doctor/dr-daniel-nejat/',
   },
   {
-    name: 'Dr. Eugene Lee',
+    name: 'Dr. Eugenie Lee',
     href: 'https://www.dentalimplantsusa.com/doctor/dr-eugenie-lee/',
   },
   {
@@ -66,101 +69,143 @@ const doctors = [
 ]
 
 export default function Footer() {
+  const isMobileOrTablet = useMobileOrTablet()
+  const isMobile = useMobile()
+
   return (
-    <section className="w-full default-bg-gray px-4 sm:px-6 lg:px-8 py-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <div className="text-center lg:text-left lg:items-start flex flex-col items-center">
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Consequences of Missing Teeth
+    <section
+      className={cn(
+        'w-full bg-gray-50 py-14',
+        isMobile ? 'px-6' : isMobileOrTablet ? 'px-10' : 'px-24'
+      )}
+    >
+      <div
+        className={cn(
+          'max-w-7xl mx-auto flex flex-col lg:flex-row justify-between gap-12',
+          'text-center md:text-center lg:text-left'
+        )}
+      >
+        {/* LEFT COLUMN — Consequences */}
+        <div className="flex-1">
+          <h2 className="text-2xl font-bold text-foreground mb-2">
+            Consequences of missing teeth
           </h2>
-          <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-
-          <div className="space-y-2 text-lg text-foreground">
-            {consequences.map(({ label, href }, index) => (
-              <Link
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                {label}
-              </Link>
+          <hr
+            className={cn(
+              'border-t border-gray-400 mb-4 transition-all',
+              'mx-auto w-full lg:mx-0 lg:w-3/4'
+            )}
+          />
+          <ul className="space-y-2 text-lg text-foreground">
+            {consequences.map(({ label, href }, i) => (
+              <li key={i}>
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:text-gray-900 transition-colors"
+                >
+                  {label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        <div className="text-center lg:text-left lg:items-start flex flex-col items-center">
-          <h2 className="text-2xl font-bold text-foreground mb-6">
-            Meet the Doctors
-          </h2>
-          <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
-
-          <div className="space-y-2 text-lg text-foreground">
-            {doctors.map(({ name, href }, index) => (
-              <Link
-                key={index}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                {name}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center text-center space-y-6">
-          <div className="space-y-3">
+        {/* RIGHT COLUMN — Doctors + Social */}
+        <div className="flex-1">
+          <div className="mb-8">
             <h2 className="text-2xl font-bold text-foreground mb-2">
-              Follow us | NY
+              Meet the doctors
             </h2>
-            <div className="flex gap-2 justify-center">
-              <Link
-                href="https://www.facebook.com/AdvancedPeriodonticsImplantDentistryNewYork"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="New York Facebook Page"
-                className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-80 transition"
-              >
-                <FaFacebookF className="text-white w-6 h-6" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/dentalimplantsnyc/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="New York Instagram Page"
-                className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center hover:opacity-80 transition"
-              >
-                <FaInstagram className="text-white w-6 h-6" />
-              </Link>
+            <hr
+              className={cn(
+                'border-t border-gray-400 mb-4 transition-all',
+                'mx-auto w-full lg:mx-0 lg:w-3/4'
+              )}
+            />
+            <ul className="space-y-2 text-lg text-gray-700">
+              {doctors.map(({ name, href }, i) => (
+                <li key={i}>
+                  <Link
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline hover:text-gray-900 transition-colors"
+                  >
+                    {name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Socials */}
+          <div className="space-y-6">
+            {/* Follow us | NY */}
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Follow us | NY
+              </h3>
+              <hr
+                className={cn(
+                  'border-t border-gray-400 mb-3 transition-all',
+                  'mx-auto w-full lg:mx-0 lg:w-3/4'
+                )}
+              />
+              <div className="flex justify-center lg:justify-start gap-3">
+                <Link
+                  href="https://www.facebook.com/AdvancedPeriodonticsImplantDentistryNewYork"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="New York Facebook"
+                  className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-80 transition"
+                >
+                  <FaFacebookF className="text-white w-5 h-5" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/dentalimplantsnyc/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="New York Instagram"
+                  className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center hover:opacity-80 transition"
+                >
+                  <FaInstagram className="text-white w-5 h-5" />
+                </Link>
+              </div>
             </div>
-          </div>
 
-          <div className="space-y-3">
-            <h2 className="text-2xl font-bold text-foreground mb-2">
-              Follow us | NJ
-            </h2>
-            <div className="flex gap-2 justify-center">
-              <Link
-                href="https://www.facebook.com/AdvancedPeriodonticsImplantDentistryNewJersey"
-                target="_blank"
-                aria-label="New Jersey Facebook Page"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-80 transition"
-              >
-                <FaFacebookF className="text-white w-6 h-6" />
-              </Link>
-              <Link
-                href="https://www.instagram.com/dentalimplantsnj/"
-                target="_blank"
-                aria-label="New Jersey Instagram Page"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center hover:opacity-80 transition"
-              >
-                <FaInstagram className="text-white w-6 h-6" />
-              </Link>
+            {/* Follow us | NJ */}
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Follow us | NJ
+              </h3>
+              <hr
+                className={cn(
+                  'border-t border-gray-400 mb-3 transition-all',
+                  'mx-auto w-full lg:mx-0 lg:w-3/4'
+                )}
+              />
+              <div className="flex justify-center lg:justify-start gap-3">
+                <Link
+                  href="https://www.facebook.com/AdvancedPeriodonticsImplantDentistryNewJersey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="New Jersey Facebook"
+                  className="w-10 h-10 rounded-full bg-[#1877F2] flex items-center justify-center hover:opacity-80 transition"
+                >
+                  <FaFacebookF className="text-white w-5 h-5" />
+                </Link>
+                <Link
+                  href="https://www.instagram.com/dentalimplantsnj/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="New Jersey Instagram"
+                  className="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-500 via-red-500 to-yellow-500 flex items-center justify-center hover:opacity-80 transition"
+                >
+                  <FaInstagram className="text-white w-5 h-5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

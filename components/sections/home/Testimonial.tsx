@@ -6,6 +6,7 @@ import { useMobileOrTablet } from '@/lib/useDevice'
 import { Montserrat } from 'next/font/google'
 import StarRating from '@/components/ui/Rating'
 import { FaGoogle } from 'react-icons/fa'
+import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -51,7 +52,7 @@ export default function Testimonial() {
   const [activeIndex, setActiveIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const isAutoScrolling = useRef(false)
-
+  const isMobile = useMobile()
   const isDragging = useRef(false)
   const startX = useRef(0)
   const scrollStart = useRef(0)
@@ -119,23 +120,27 @@ export default function Testimonial() {
     <div
       className={cn(
         'flex flex-col items-center',
-        isMobileOrTablet ? 'p-2 pb-8' : 'px-10 pt-5 pb-12'
+        isMobile
+          ? 'px-5 py-20'
+          : isMobileOrTablet
+          ? 'px-5 py-10'
+          : 'py-20 px-35'
       )}
     >
       <h1
         className={cn(
-          `text-center font-bold text-foreground max-w-2xl p-6 uppercase ${montserrat.className}`,
-          isMobileOrTablet ? 'p-4 pt-5 text-4xl' : 'text-5xl'
+          `text-center font-bold text-foreground max-w-2xl uppercase ${montserrat.className}`,
+          isMobileOrTablet ? 'text-4xl' : 'text-5xl'
         )}
       >
         Our Happy Clients
       </h1>
-      <h2 className="text-xl text-center text-foreground max-w-2xl pb-4">
+      <h2 className="text-xl text-center sub-head max-w-2xl pb-4">
         Know more about what our clients say about us!
       </h2>
-      <hr className="my-1 border-t border-foreground w-3/4 mb-5" />
+      <hr className="my-1 w-full border-t" />
 
-      <div className="w-full max-w-5xl px-6 pb-2 overflow-hidden">
+      <div className="w-full overflow-hidden py-5">
         <div
           ref={containerRef}
           className="flex gap-6 overflow-x-scroll px-4 cursor-grab scroll-smooth scrollbar-hide"
@@ -169,7 +174,7 @@ export default function Testimonial() {
           ))}
         </div>
 
-        <div className="flex justify-center gap-2 mt-6">
+        <div className="flex justify-center gap-2 mt-4">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}

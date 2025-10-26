@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { Form } from '../../../components/Form'
 import {
   officeOptions,
@@ -14,59 +13,21 @@ import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { directus } from '@/lib/directus'
 import { createItem } from '@directus/sdk'
+import { useMobile } from '@/lib/useMobile'
+import HeroTestimonial from '@/components/ui/HeroTestimonial'
 
-const montserrat = Montserrat({
+const montserratBold = Montserrat({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['600'],
 })
 
-const slides = [
-  {
-    bg: '/banner/top-banner-img-opt-2.webp',
-    before: '/banner/before-slide-1.webp',
-    after: '/banner/after-slide-1.webp',
-    quote:
-      '“When I was told I was not a candidate for dental implants, I felt completely hopeless. Discovering that I was a candidate for the All-On-Four procedure saved my life!”',
-    name: 'Grace, All-On-Four Smile Recipient',
-    position: 'top-left',
-  },
-  {
-    bg: '/banner/top-banner-img-opt-3.webp',
-    before: '/banner/before-slide-2.webp',
-    after: '/banner/after-slide-2.webp',
-    quote:
-      '"I went from hiding my teeth, to smiling at strangers! This procedure has changed my life!"',
-    name: 'Emily, All-On-Four Smile Recipient',
-    position: 'top-left',
-  },
-  {
-    bg: '/banner/top-banner-img-opt-5.webp',
-    before: '/banner/before-slide-4.webp',
-    after: '/banner/after-slide-4.webp',
-    quote:
-      '“I am so happy I chose to trust this office with my smile! I have never felt more confident!”',
-    name: 'John, All-On-Four Smile Recipient',
-    position: 'top-right',
-  },
-  {
-    bg: '/banner/top-banner-img-opt-4.webp',
-    before: '/banner/before-slide-3.webp',
-    after: '/banner/after-slide-3.webp',
-    quote:
-      '"The All-On-Four procedure was easy, fast, and painless! I can now smile confidently again."',
-    name: 'Greg, All-On-Four Smile Recipient',
-    position: 'top-right',
-  },
-]
-
 export default function AppointmentSection() {
-  const [currentImage, setCurrentImage] = useState(0)
   const [step, setStep] = useState(1)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const isMobileOrTablet = useMobileOrTablet()
-
+  const isMobile = useMobile()
   const [formData, setFormData] = useState({
     office: '',
     service: '',
@@ -84,13 +45,6 @@ export default function AppointmentSection() {
   useEffect(() => {
     const savedData = localStorage.getItem(LOCAL_STORAGE_KEY)
     if (savedData) setFormData(JSON.parse(savedData))
-  }, [])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(interval)
   }, [])
 
   const handleChange = (field: keyof typeof formData) => (value: string) => {
@@ -166,8 +120,6 @@ export default function AppointmentSection() {
     }
   }
 
-  const { bg, before, after, quote, name, position } = slides[currentImage]
-
   if (submitted) {
     return (
       <section className="flex flex-col items-center justify-center text-center py-20 bg-default-gray">
@@ -192,72 +144,22 @@ export default function AppointmentSection() {
     <section
       className={cn(
         'flex w-full',
-        isMobileOrTablet ? 'flex-col pt-25' : 'flex-row mt-6 pt-30'
+        isMobileOrTablet ? 'flex-col pt-24' : 'flex-row mt-8 pt-30'
       )}
     >
+      <HeroTestimonial />
       <div
         className={cn(
-          'relative overflow-hidden bg-cover bg-center transition-all duration-500',
-          isMobileOrTablet ? 'w-full h-[500px]' : 'w-1/2 h-[600px]'
-        )}
-      >
-        <Image
-          //src={bg}
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${bg}`}
-          alt="Testimonial background"
-          fill
-          priority
-          className={cn(
-            'object-cover transition-all duration-500',
-            isMobileOrTablet && 'blur-sm scale-105'
-          )}
-        />
-
-        <div
-          className={cn(
-            'absolute bg-white/70 text-foreground p-4 rounded shadow-md z-10 transition-all duration-500',
-            montserrat.className,
-            isMobileOrTablet
-              ? 'inset-0 flex flex-col items-center justify-center text-center w-full max-w-sm mx-auto'
-              : position === 'top-left'
-              ? 'top-4 left-4 max-w-xs'
-              : 'top-4 right-4 max-w-xs'
-          )}
-        >
-          <p className="italic mb-3 text-lg font-light">{quote}</p>
-          <p className="font-semibold">{name}</p>
-
-          <div className="flex justify-center gap-4 mt-4">
-            <Image
-              //src={before}
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${before}`}
-              alt="Before"
-              width={100}
-              height={70}
-              className="rounded border"
-            />
-            <Image
-              //src={after}
-              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${after}`}
-              alt="After"
-              width={100}
-              height={70}
-              className="rounded border"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={cn(
-          'default-bg-gray p-8 flex flex-col justify-start items-center',
-          isMobileOrTablet ? 'w-full' : 'w-1/2'
+          'default-bg-gray p-5 flex flex-col justify-start items-center',
+          isMobile ? 'px-5' : isMobileOrTablet ? 'px-5' : 'w-1/2'
         )}
       >
         {step === 4 ? (
           <div className="flex flex-col items-center justify-center h-full space-y-6">
-            <h2 className="text-3xl font-bold text-[#0085cc]">Thank You!</h2>
-            <p className="text-gray-700 text-lg max-w-md">
+            <h2 className="text-3xl font-bold text-[#0085cc] text-center">
+              Thank You! Your Consultation request has been submitted.
+            </h2>
+            <p className="text-foreground text-lg max-w-md text-center">
               Your appointment request has been received. We will contact you
               soon to confirm your schedule.
             </p>
@@ -270,7 +172,11 @@ export default function AppointmentSection() {
           </div>
         ) : (
           <>
-            <h2 className="text-2xl font-bold mb-6 text-center text-[#0085cc]">
+            <h2
+              className={cn(
+                `text-xl font-bold mb-6 text-center text-[#0085cc] uppercase ${montserratBold.className}`
+              )}
+            >
               Book an Appointment
             </h2>
             <StepIndicator currentStep={step} />

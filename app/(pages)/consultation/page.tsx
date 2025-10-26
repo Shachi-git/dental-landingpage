@@ -175,13 +175,23 @@ export default function AppointmentSection() {
   }
 
   return (
-    <section className="w-full lg:px-8 pt-35 lg:pt-50 pb-15 px-10">
-      <div className="max-w-2xl mx-auto text-center">
+    <section
+      className={cn(
+        ' w-full',
+        isMobileOrTablet ? 'mt-23 py-10 px-5' : 'mt-8 pt-38 py-10'
+      )}
+    >
+      <div
+        className={cn(
+          'mx-auto text-center',
+          isMobileOrTablet ? 'px-5' : 'px-35'
+        )}
+      >
         <h1
           className={cn(
             `font-bold text-foreground uppercase ${montserrat.className}`,
             isMobileOrTablet
-              ? 'text-4xl pt-5 pb-2'
+              ? 'text-4xl pb-2'
               : 'text-5xl pb-4 whitespace-nowrap'
           )}
         >
@@ -196,20 +206,28 @@ export default function AppointmentSection() {
       </div>
 
       {isSubmitted ? (
-        <div className="max-w-2xl mx-auto text-center py-10">
+        <div
+          className={cn(
+            'text-center pt-10',
+            isMobileOrTablet ? 'px-5' : 'px-35'
+          )}
+        >
           <h2 className="text-2xl font-semibold default-blue">
             Thank you! Your consultation request has been submitted.
           </h2>
-          <p className="mt-4 text-gray-600">
+          <p className="mt-1 text-foreground">
             Our team will reach out to you soon to confirm your appointment.
           </p>
 
-          <button type="button" onClick={handleResetForm} className="btn mt-8">
+          <button type="button" onClick={handleResetForm} className="btn mt-1">
             Submit Another
           </button>
         </div>
       ) : (
-        <form className="max-w-2xl mx-auto space-y-6" onSubmit={handleSubmit}>
+        <form
+          className={cn('space-y-6', isMobileOrTablet ? 'px-5' : 'px-35')}
+          onSubmit={handleSubmit}
+        >
           {step === 1 && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

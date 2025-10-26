@@ -1,10 +1,19 @@
 'use client'
 
 import Link from 'next/link'
+import cn from 'classnames'
+import { useMobileOrTablet } from '@/lib/useDevice'
 
 export default function Copyright() {
+  const isMobileOrTablet = useMobileOrTablet()
+
   return (
-    <div className="w-full bg-gray-200 py-6 px-4 sm:px-6 lg:px-8">
+    <div
+      className={cn(
+        'w-full bg-gray-200 py-3',
+        isMobileOrTablet ? 'px-2' : 'px-35'
+      )}
+    >
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-4">
         <p className="text-sm text-foreground">
           Copyright © 2025 Advanced & Implant Dentistry. All Rights Reserved.

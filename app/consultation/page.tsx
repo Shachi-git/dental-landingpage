@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Form } from '../../../components/Form'
-import { officeOptions, timeOptions } from '../../../lib/Options'
+import { Form } from '@/components/Form'
+import { officeOptions, timeOptions } from '@/lib/Options'
 import cn from 'classnames'
 import { useMobileOrTablet } from '@/lib/useDevice'
 import { Montserrat } from 'next/font/google'

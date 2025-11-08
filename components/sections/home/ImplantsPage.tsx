@@ -1,7 +1,6 @@
 'use client'
 
 import { Montserrat } from 'next/font/google'
-import { useMobileOrTablet } from '@/lib/useDevice'
 import cn from 'classnames'
 
 const montserrat = Montserrat({
@@ -10,8 +9,6 @@ const montserrat = Montserrat({
 })
 
 export default function ImplantsPage() {
-  const isMobileOrTablet = useMobileOrTablet()
-
   return (
     <div className={cn('flex justify-center p-5 w-full')}>
       <h2

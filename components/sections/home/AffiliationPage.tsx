@@ -15,23 +15,23 @@ const montserrat = Montserrat({
 const affiliations = [
   {
     name: 'Academy of Osseointegration',
-    image: '/affiliation/final-ao-logo.webp',
+    image: 'affiliation/final-ao-logo.webp',
   },
   {
     name: 'American Dental Society',
-    image: '/affiliation/ada-logo.webp',
+    image: 'affiliation/ada-logo.webp',
   },
   {
     name: 'New York State Dental Association',
-    image: '/affiliation/NYS-dental-association.webp',
+    image: 'affiliation/NYS-dental-association.webp',
   },
   {
     name: 'Accredited BBB Rating A+',
-    image: '/affiliation/a-rated.webp',
+    image: 'affiliation/a-rated.webp',
   },
   {
     name: 'American Board of Periodontology',
-    image: '/affiliation/sp-img-2.webp',
+    image: 'affiliation/sp-img-2.webp',
   },
 ]
 
@@ -100,8 +100,12 @@ export default function AffiliationsScroller() {
     >
       <div className="h-[130px] flex items-center justify-center mb-2">
         <Image
-          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${item.image}`}
-          //src={item.image}
+          //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${item.image}`}
+          //src={`.${item.image}`}
+          src={`${process.env.NODE_ENV === 'production' ? './' : '/'}${
+            item.image
+          }`}
+          //src={`${process.env.NEXT_PUBLIC_BASE_PATH || '.'}/${item.image}`}
           alt={item.name}
           height={150}
           width={150}

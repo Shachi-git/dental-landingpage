@@ -254,9 +254,9 @@ export const doctorSection = [
     href: 'https://www.dentalimplantsusa.com/advanced-periodontics-and-implant-dentistry-new-york/',
     mapEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3246.8571860630873!2d-73.97801679999999!3d40.7503912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2590144805063%3A0x1f4d3ebe2a8c496b!2sAdvanced%20Periodontics%20%26%20Implant%20Dentistry!5e1!3m2!1sen!2sph!4v1760701687852!5m2!1sen!2sph',
-    images: ['/image/ny1.webp',
-        '/image/ny2.webp',
-        '/image/ny3.webp'] 
+    images: ['image/ny1.webp',
+        'image/ny2.webp',
+        'image/ny3.webp'] 
   },
   {
     name: 'Nutley',
@@ -269,9 +269,9 @@ export const doctorSection = [
     href:'https://www.dentalimplantsusa.com/advanced-periodontics-and-implant-dentistry-new-jersey/',
     mapEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d439.0929416805792!2d-74.1564205727619!3d40.81276241424011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2558ee08d6f5b%3A0xedf122e33e2f9aca!2sAll%20On%20Four%20Dental%20Implants%20New%20Jersey!5e1!3m2!1sen!2sph!4v1760758899804!5m2!1sen!2sph',
-    images: ['/image/nj1.webp',
-        '/image/nj2.webp',
-        '/image/nj3.webp']
+    images: ['image/nj1.webp',
+        'image/nj2.webp',
+        'image/nj3.webp']
     },
   {
     name: 'Long Island',
@@ -282,9 +282,9 @@ export const doctorSection = [
     href:'https://www.dentalimplantsusa.com/dental-implants-ny-long-island-office/',
     mapEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241.46895950950565!2d-73.67598435969498!3d40.71046181730976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26320102de04f%3A0x3fda5d8c983b59be!2sClock%20Tower%20Dental%20Associates!5e1!3m2!1sen!2sph!4v1760758983511!5m2!1sen!2sph',
-    images: ['/image/li1.webp',
-        '/image/li2.webp',
-        '/image/li3.webp']
+    images: ['image/li1.webp',
+        'image/li2.webp',
+        'image/li3.webp']
     },
   {
     name: 'Bronxville',
@@ -295,9 +295,9 @@ export const doctorSection = [
     href:'https://www.dentalimplantsusa.com/advanced-periodontics-and-implant-dentistry-bronxville/',
     mapEmbed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1361.264413604947!2d-73.8301239940691!3d40.93857835747274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c292aeeab34591%3A0xf014ec94ddde7641!2s21%20Kraft%20Ave%2C%20Bronxville%2C%20NY%2010708%2C%20USA!5e1!3m2!1sen!2sph!4v1760759262876!5m2!1sen!2sph',
-    images: ['/image/brox1.webp',
-        '/image/brox2.webp',
-        '/image/brox3.webp']
+    images: ['image/brox1.webp',
+        'image/brox2.webp',
+        'image/brox3.webp']
   },
 ]
 

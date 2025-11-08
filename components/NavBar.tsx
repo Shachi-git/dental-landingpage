@@ -44,14 +44,15 @@ const NavBar = () => {
             return (
               <Link
                 key="logo"
-                href="/index.html"
+                href={`/homepage`}
                 aria-label="Dental Implant USA Logo"
               >
                 <div className="flex-shrink-0 w-1/2 sm:w-[250px]">
                   <Image
                     src={`${
-                      process.env.NEXT_PUBLIC_BASE_PATH || ''
-                    }/logo/logo.webp`}
+                      process.env.NODE_ENV === 'production' ? './' : '/'
+                    }logo/logo.webp`}
+                    //src="./logo/logo.webp"
                     alt="Dental Implant USA Logo"
                     width={250}
                     height={80}

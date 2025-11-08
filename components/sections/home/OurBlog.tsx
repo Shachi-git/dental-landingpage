@@ -17,7 +17,7 @@ const blogPosts = [
     title: 'Dental Implants and Smoking: Risks, Effects, and Best Practices',
     date: 'July 7, 2024',
     image:
-      '/blog/dental-implants-and-smoking-risks-effects-and-best-practices.webp',
+      'blog/dental-implants-and-smoking-risks-effects-and-best-practices.webp',
     href: 'https://www.dentalimplantsusa.com/dental-implants-and-smoking-risks-effects-and-best-practices/',
   },
   {
@@ -25,13 +25,13 @@ const blogPosts = [
       'Permanent Dentures vs. Dental Implants: Making the Right Choice for Your Smile',
     date: 'July 7, 2024',
     image:
-      '/blog/permanent-dentures-vs-dental-implants-making-the-right-choice-for-your-smile.webp',
+      'blog/permanent-dentures-vs-dental-implants-making-the-right-choice-for-your-smile.webp',
     href: 'https://www.dentalimplantsusa.com/permanent-dentures-vs-dental-implants-making-the-right-choice-for-your-smile/',
   },
   {
     title: 'Can You Get Dental Implants with Gum Disease?',
     date: 'July 7, 2024',
-    image: '/blog/can-you-get-dental-implants-with-gum-disease.webp',
+    image: 'blog/can-you-get-dental-implants-with-gum-disease.webp',
     href: 'https://www.dentalimplantsusa.com/can-you-get-dental-implants-with-gum-disease/',
   },
   {
@@ -39,7 +39,7 @@ const blogPosts = [
       'Can Dental Implants Get Infected? Understanding Risks and Prevention',
     date: 'July 8, 2024',
     image:
-      '/blog/can-dental-implants-get-infected-understanding-risks-and-prevention.webp',
+      'blog/can-dental-implants-get-infected-understanding-risks-and-prevention.webp',
     href: 'https://www.dentalimplantsusa.com/can-dental-implants-get-infected-understanding-risks-and-prevention/',
   },
 ]
@@ -83,7 +83,14 @@ export default function BlogSection() {
           >
             <div className="relative h-48 w-full">
               <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
+                //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${post.image}`}
+                src={`${process.env.NODE_ENV === 'production' ? './' : '/'}${
+                  post.image
+                }`}
+                /*src={`${process.env.NEXT_PUBLIC_BASE_PATH || '.'}/${
+                  post.image
+                }`}*/
+                //src={`.${post.image}`}
                 alt={post.title}
                 fill
                 className="object-cover"

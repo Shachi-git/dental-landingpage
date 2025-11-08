@@ -2,13 +2,10 @@
 
 import { IoCalendarOutline } from 'react-icons/io5'
 import React from 'react'
-import { useRouter } from 'next/navigation'
 
 export default function AppointmentButton() {
-  const router = useRouter()
-
   const handleClick = () => {
-    router.push('/consultation/')
+    window.location.href = `/consultation`
   }
 
   return (

@@ -68,15 +68,18 @@ export const TopBar = () => {
                 <FaBars className="h-6 w-8" />
               </button>
               <Link
-                href="/"
+                href={`/homepage`}
                 //href="/index.html"
                 aria-label="Dental Implant USA Icon"
               >
                 <Image
-                  //src="/logo/logo.webp"
                   src={`${
+                    process.env.NODE_ENV === 'production' ? './' : '/'
+                  }logo/logo.webp`}
+                  //src="./logo/logo.webp"
+                  /*src={`${
                     process.env.NEXT_PUBLIC_BASE_PATH || ''
-                  }/logo/logo.webp`}
+                  }/logo/logo.webp`}*/
                   alt="Logo"
                   width={200}
                   height={100}

@@ -120,8 +120,12 @@ export default function LocationDialogue({
                 {activeLocation.images?.map((src, index) => (
                   <div key={index} className="w-full rounded overflow-hidden">
                     <Image
-                      //src={src}
-                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${src}`}
+                      //src={`.${src}`}
+                      //src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}${src}`}
+                      src={`${
+                        process.env.NODE_ENV === 'production' ? './' : '/'
+                      }${src}`}
+                      //src={`${process.env.NEXT_PUBLIC_BASE_PATH || '.'}/${src}`}
                       alt={`Clinic view ${index + 1}`}
                       width={100}
                       height={100}

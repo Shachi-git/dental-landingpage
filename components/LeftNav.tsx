@@ -48,13 +48,16 @@ const LeftNav = () => {
         }`}
       >
         <Link
-          href="/"
+          href={`/homepage`}
           //href="/index.html"
           aria-label="Dental Implant USA Logo"
         >
           <Image
-            //src="/logo/logo.webp"
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo/logo.webp`}
+            //src="./logo/logo.webp"
+            src={`${
+              process.env.NODE_ENV === 'production' ? './' : '/'
+            }logo/logo.webp`}
+            //src={`${process.env.NEXT_PUBLIC_BASE_PATH || '.'}/logo/logo.webp`}
             alt="Dental Implant USA Logo"
             width={350}
             height={200}

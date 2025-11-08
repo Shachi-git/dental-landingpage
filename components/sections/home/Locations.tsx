@@ -4,7 +4,6 @@ import { useState } from 'react'
 import cn from 'classnames'
 import { Montserrat } from 'next/font/google'
 import { useMobileOrTablet } from '@/lib/useDevice'
-import { useRouter } from 'next/navigation'
 import { useMobile } from '@/lib/useMobile'
 
 const montserrat = Montserrat({
@@ -59,12 +58,12 @@ const locations = [
 export default function AppointmentSection() {
   const [activeLocation, setActiveLocation] = useState(locations[0])
   const isMobileOrTablet = useMobileOrTablet()
-  const router = useRouter()
   const isMobile = useMobile()
 
   const handleClick = () => {
-    router.push('/consultation/')
+    window.location.href = `/consultation`
   }
+
   return (
     <section
       className={cn(

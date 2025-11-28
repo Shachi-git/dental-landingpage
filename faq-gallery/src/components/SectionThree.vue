@@ -55,7 +55,6 @@ function toggle(index) {
     faq.open = i === index ? !faq.open : false
   })
 }
-
 </script>
 
 <template>
@@ -69,18 +68,26 @@ function toggle(index) {
 
       <hr className="my-1 w-full border-t border-gray-400 pb-4" />
       <div v-for="(faq, index) in faqs" :key="index" class="border-b border-gray-300 py-4">
+
+        <!-- Toggle Button -->
         <button @click="toggle(index)"
           class="w-full hover:text-[#0085cc] cursor-pointer flex justify-between items-center text-left font-medium text-lg">
-          <SectionSubTitle class="flex-1">{{ faq.question }}</SectionSubTitle>
-          <svg :class="{ 'rotate-180': faq.open }"
+          <SectionSubTitle class="flex-1">
+            {{ faq.question }}
+          </SectionSubTitle>
+
+          <svg :class="faq.open ? 'rotate-180' : ''"
             class="w-5 h-5 flex-shrink-0 ml-2 transform transition-transform duration-200" fill="none"
             stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9" />
           </svg>
         </button>
 
-        <SubParagraphText v-if="faq.open" v-html="faq.answer" class="mt-2 text-gray-600">
-        </SubParagraphText>
+        <!-- Tailwind Transition for Height -->
+        <div :class="faq.open ? 'max-h-[500px]' : 'max-h-0'"
+          class="overflow-hidden transition-all duration-300 ease-in-out">
+          <SubParagraphText v-html="faq.answer" class="mt-2 text-gray-600 text-sm pb-4" />
+        </div>
       </div>
     </div>
   </section>

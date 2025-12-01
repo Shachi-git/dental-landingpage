@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #4a4d52;
+}
+.blue {
+  color: #0085cc !important;
+}
+.application-btn {
+  background: #0085cc;
+  color: #ffffff !important;
+  padding: 0.52rem;
+  transition: 0.3s ease;
+  border: #0085cc 1px solid !important;
+}
+
+.application-btn:hover,
+.application-btn:focus {
+  background: #ffffff;
+  color: #0085cc !important;
+}
+
+.bg-blue {
+  background-color: #0085cc;
+  font-family: "poppins", sans-serif;
+  color: white;
+}
+
+.default-bg-blue {
+  background-color: #0085cc !important;
+}
+.default-bg-gray {
+  background: #f7f7f7 !important;
+}
+
+.sub-head {
+  color: #7a7a7a !important;
+}
+
+.headingFont {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #333333;
+}
+
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.triangle-divider-white {
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 20px solid white; /* Replace with your desired color */
+  margin: 0 auto;
+}
+
+.poppins {
+  font-family: "Poppins", serif;
+}
+
+.lora {
+  font-family: "Lora", serif;
+}
+@media (min-width: 768px) {
+  .btn-blue {
+    font-size: 20px;
+  }
+  .btn-contact {
+    font-size: 20px;
+  }
+}
+
+.btn-contact:hover {
+  background-color: #fd5e0f;
+  color: white;
+}
+
+.application-btn {
+  background: #0085cc;
+  color: #ffffff !important;
+  padding: 0.52rem;
+  transition: 0.3s ease;
+  border: #0085cc 1px solid !important;
+}
+
+.default-blue {
+  color: #0085cc !important;
+}
+.default-bg-blue {
+  background-color: #0085cc !important;
+}
+
+.default-gray {
+  color: #4a4d52 !important;
+}
+
+.default-bg-gray {
+  background: #f7f7f7 !important;
+}
+.sub-head {
+  color: #7a7a7a !important;
+}
+
+.application-btn:hover,
+.application-btn:focus {
+  background: #ffffff;
+  color: #0085cc !important;
+}
+.user-select-none {
+  user-select: none;
+}
+
+.head-loc-btn {
+  background-color: #ffffff !important;
+  color: #4a4d52 !important;
+  padding: 0.75rem 4rem;
+  transition: 0.3s ease;
+}
+
+.head-loc-active {
+  color: #0085cc !important;
+}
+
+.loc-btn {
+  background-color: #ffffff !important;
+  color: #4a4d52 !important;
+  padding: 0.75rem 4rem;
+  transition: 0.3s ease;
+}
+.loc-btn:hover {
+  background-color: #0085cc !important;
+  color: #ffffff !important;
+  padding: 0.75rem 4rem;
+}
+
+.loc-btn-active {
+  background-color: #0085cc !important;
+  color: #ffffff !important;
+  padding: 0.75rem 4rem;
+}
+
+.btn {
+  background-color: #0085cc !important;
+  color: white;
+  padding: 0.5rem 1.5rem !important;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0097e9 !important;
+  transition: 0.3s ease;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-display: swap;
+}
+
+.bb1 {
+  border: 1px solid red;
+}
+.orange {
+  color: #fd5e0f;
+}
+.bb2 {
+  border: 1px solid blue;
+}
+.bb3 {
+  border: 1px solid green;
+}
+.bb4 {
+  border: 1px solid yellow;
+}

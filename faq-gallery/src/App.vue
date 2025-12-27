@@ -10,6 +10,7 @@ import PageHeader from './components/PageHeader.vue';
 <template>
   <div class="min-h-screen flex flex-col bg-white">
     <PageHeader />
+    <div class="md:h-16 h-28"></div>
     <!-- Header and First Section -->
     <SectionOne />
     <!--Before/After Title-->

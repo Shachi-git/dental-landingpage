@@ -3,34 +3,34 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const testimonials = [
     {
-        name: 'Al Busha',
+        name: 'Alex Morgan',
         review:
-            "Highly recommended. Can't say enough about Dr. Daniel Nejat. Absolutely the best dentist I have ever had for my complicated situation. In two sessions finished 4 implants and caps of which he has a high level of touching with my sinuses in a correct way with great ease and professionalism!! Great and friendly staff.",
+            'The entire experience was smooth and welcoming. The team explained each step clearly and made the process feel simple and comfortable from beginning to end.',
     },
     {
-        name: 'Gordana Gelic',
+        name: 'Sofia Bennett',
         review:
-            "I have been Dr. Richard Nejat's patient for 12+ years having so many different dental procedures and surgeries (some of them to be the most difficult and simple), and every time Dr. Nejat found the best possible solution and executed it with precision and brilliance, always being kind with his presence and ensuring minimal discomfort. His entire dental practice (coordinator Stephanie, his assistants (Emily in particular whom I know the longest) are all excellent professionals and will approach you with great care and make you feel like you are at home during, and post surgery follow up. Highly recommended!",
+            'I really appreciated how attentive the team was throughout my visit. Everything was explained in a way that was easy to understand, and I always felt well taken care of.',
     },
     {
-        name: 'Mark Bianchi',
+        name: 'Daniel Carter',
         review:
-            "As a patient of many years, I am impressed with the exemplary work of Dr. Richard Nejat as a dental professional. He explains options and details of treatment in laymen's terms. The procedural plan includes long term projections and Dr. Nejat is extremely skillful, knowledgeable and experienced. The entire staff is helpful, polite and caring. I highly recommend this practice.",
+            'The clinic has a modern and comfortable atmosphere. The staff were friendly, professional, and happy to answer all of my questions during the consultation.',
     },
     {
-        name: 'Timothy Bright',
+        name: 'Emma Richardson',
         review:
-            'Had Fidel for a cleaning and it was a complete dental spa experience. Fidel was very informative during each stage of my recall appointment and did a great job checking my comfort level pertaining to sensitivity from start to finish. He told me my teeth are in great shape already but he still has them feeling better than ever!',
+            'From scheduling to the actual appointment, the experience was organized and stress-free. The team made sure I understood my options before moving forward.',
     },
     {
-        name: 'Bruce Popolizio',
+        name: 'Michael Turner',
         review:
-            'My implant became loose after 2 years. I went in today and they did the right thing. Their new office is state of the art. Everyone is very professional. I’m highly recommending Advanced Periodontics & Implants.',
+            'I was impressed by the attention to detail and the welcoming environment. The staff took the time to explain the process and made the entire visit comfortable.',
     },
     {
-        name: 'Zach Vocatura',
+        name: 'Olivia Parker',
         review:
-            'I ran out of options and was referred to Dr. Nejat. Immediately upon meeting him, he gave me the best option for my situation. It was something I was unaware of and it definitely calmed my worries down. The office staff is very helpful and great as well. I couldn’t be happier with my results.',
+            'A great experience from start to finish. The team was professional, approachable, and focused on making sure I felt comfortable throughout my visit.',
     },
 ]
 
@@ -138,10 +138,11 @@ const maxIndex = computed(() =>
 <template>
     <div class="flex flex-col px-6 mx-auto container items-center py-10">
         <h1 class="text-3xl uppercase md:text-[40px] text-center w-full default-gray headingFont">
-            Our Happy Clients
+            What Our Patients Say
         </h1>
+
         <h2 class="text-xl text-center montserrat sub-head max-w-2xl pb-4">
-            Know more about what our clients say about us!
+            Hear what people have to say about their dental care experience.
         </h2>
 
         <hr className="my-1 w-full border-t border-gray-400 pb-4" />

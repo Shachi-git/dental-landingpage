@@ -8,7 +8,6 @@ import SectionFour from '../../components/SectionFour.vue';
 import SectionFive from '../../components/SectionFive.vue';
 import SectionSix from '../../components/SectionSix.vue';
 import SectionSeven from '../../components/SectionSeven.vue';
-import SectionEight from '../../components/SectionEight.vue';
 import SectionNine from '../../components/SectionNine.vue';
 
 </script>
@@ -32,8 +31,6 @@ import SectionNine from '../../components/SectionNine.vue';
         <SectionSix />
         <!--Our Blog-->
         <SectionSeven />
-        <!--Accreditations and Affiliations-->
-        <SectionEight />
         <!--Schedule Your Appointment-->
         <SectionNine />
         <!-- Footer -->

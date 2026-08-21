@@ -9,38 +9,38 @@ import denturesImg from '../assets/reasons/xdentures.webp'
 
 // Tabs
 const reasons = [
-    { label: 'All-On-4 Dental Implants', key: 'allOn4' },
-    { label: 'Single Tooth Replacement', key: 'singleTooth' },
-    { label: 'Multiple Tooth Replacement', key: 'multipleTooth' },
-    { label: 'Smile in a Day', key: 'smileInADay' },
-    { label: 'Zygomatic Dental Implants', key: 'zygomatic' },
-    { label: 'Dentures', key: 'dentures' },
+    { label: 'Full Arch Implants', key: 'allOn4' },
+    { label: 'Single Tooth Implants', key: 'singleTooth' },
+    { label: 'Multiple Tooth Implants', key: 'multipleTooth' },
+    { label: 'Same-Day Smile', key: 'smileInADay' },
+    { label: 'Advanced Implants', key: 'zygomatic' },
+    { label: 'Custom Dentures', key: 'dentures' },
 ]
 
 // Content
 const reasonsContent = {
     allOn4: {
-        text: 'The All-On-4 dental implant procedure is a groundbreaking technique that replaces teeth top and bottom arches with fewer implants than traditional dental implants. This technique is well-known worldwide for its efficiency, precision, and durability. Our experienced elite dental professionals have transformed smiles with the All-On-Four dental implant technique for over a decade. This procedure involves the efficient and precise placement of 4 dental implants to support each arch, making this technique the most cost-effective and time-efficient smile restoration procedure! Our patients leave our office with a brand new, fully-functioning smile in just one day!',
+        text: 'Full arch dental implants provide a stable and natural-looking solution for replacing an entire row of missing or damaged teeth. By strategically positioning a small number of implants, a complete set of replacement teeth can be securely supported. This approach can restore everyday functions such as eating and speaking while providing a comfortable and confident smile.',
         image: allOn4Img,
     },
     singleTooth: {
-        text: 'Your teeth affect your overall health. A missing tooth can affect your speech, bite, and food choices. Dental implants are the most conservative and long-lasting solution for replacing a single tooth. A dental implant is a secure solution that replaces both the missing tooth and its root. They produce a strong foundation and stimulate jaw bone growth, keeping the jaw bone healthy. If you are looking to replace a single tooth and better your smile, dental implants are the perfect choice for you!',
+        text: 'Replacing a missing tooth can help restore both the appearance and function of your smile. A dental implant replaces the missing tooth root and provides a strong foundation for a natural-looking replacement tooth. With proper care, an implant-supported restoration can provide a durable solution while helping maintain the surrounding structure of your smile.',
         image: singleToothImg,
     },
     multipleTooth: {
-        text: 'Tooth decay, gum disease, or injury can be one of the causes of missing teeth. You can select from several teeth replacement options for replacing several missing teeth - from temporary to fixed solutions. Multiple teeth replacement options include dental implants, a fixed dental bridge, and a removable partial denture. If you are looking to replace several missing teeth, consult with one of our highly experienced specialists to see which treatment option is best for you!',
+        text: 'When several teeth are missing, there are multiple options available depending on your individual needs. Implant-supported restorations can replace multiple missing teeth while providing stability and a natural appearance. Treatment may involve individual implants, implant-supported bridges, or other customized solutions designed to restore your smile.',
         image: multipleToothImg,
     },
     smileInADay: {
-        text: 'Smile in a Day™ utilizes dental implants to securely and immediately replace missing, compromised, decayed, or broken teeth. This procedure offers an ideal solution for dental implant patients who struggle with wearing dentures or who need to have their teeth removed. Patients who are missing one or multiple teeth will benefit significantly from the Smile in a Day™ solution that produces a fully functioning, brand new smile in just one day!',
+        text: 'Same-day smile solutions are designed to streamline the process of restoring damaged or missing teeth. Depending on the treatment plan, temporary replacement teeth may be placed during the same visit as implant treatment. This approach can help patients begin their smile restoration journey quickly while working toward a long-term result.',
         image: smileInADayImg,
     },
     zygomatic: {
-        text: 'If you have been told you do not have enough natural bone for dental implants, we have the perfect solution for you! Traditionally, bone grafting is needed to create a sufficient foundation if the patient does not have adequate jaw bone to support the dental implant. Zygomatic Graftless Dental Implants is a revolutionary dental implant technique that completely eliminates the need for bone grafting. Zygomatic implants are a graftless dental implant technique that embeds the dental implant directly into the lower portion of the cheekbone, where there is sufficient bone material; therefore, replacing the missing tooth or teeth without the additional bone graft.',
+        text: 'Advanced implant techniques can provide additional options for patients with more complex dental needs. Specialized implants may be considered when traditional implant placement is not suitable because of limited bone support. A personalized evaluation can help determine which treatment approach is appropriate for restoring function and confidence.',
         image: zygomaticImg,
     },
     dentures: {
-        text: 'One of the most commonly used solutions for patients missing several teeth in one or both jaws is complete dentures. A denture is a removable prosthetic piece supported by the surrounding soft and hard tissue in the mouth with no secure connection to the jawbone. To maximize functionality and comfort, a removable denture is custom-fitted to each patient\'s jawbone.',
+        text: 'Custom dentures are a removable option for replacing multiple missing teeth and restoring everyday dental function. Modern dentures can be designed to provide a comfortable fit and natural appearance. Each restoration can be customized to complement the patient’s smile and support comfortable eating and speaking.',
         image: denturesImg,
     },
 }
@@ -71,8 +71,9 @@ const activeTab = ref('allOn4')
             <!-- Content -->
             <div class="text-foreground flex flex-col lg:flex-row items-start gap-6 default-bg-gray p-5">
                 <img :src="reasonsContent[activeTab].image"
-                    :alt="reasons.find((t) => t.key === activeTab)?.label || 'Dental-Image'"
+                    :alt="reasons.find((t) => t.key === activeTab)?.label || 'Dental Image'"
                     class="w-full md:max-w-md lg:max-w-sm rounded shadow mx-auto" />
+
                 <p class="flex-1 text-lg min-w-[200px] text-justify">
                     {{ reasonsContent[activeTab].text }}
                 </p>
